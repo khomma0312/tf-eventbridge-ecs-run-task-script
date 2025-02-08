@@ -1,0 +1,35 @@
+{
+  "family": "ecs-scheduler-example",
+  "taskRoleArn": "arn:aws:iam::794216660063:role/ecs-scheduler-example-ecs-task-role",
+  "executionRoleArn": "arn:aws:iam::794216660063:role/ecs-scheduler-example-ecs-task-execution-role",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "512",
+  "memory": "1024",
+  "containerDefinitions": [
+    {
+      "name": "ecs-scheduler-example",
+      "image": "794216660063.dkr.ecr.ap-northeast-1.amazonaws.com/ecs-scheduler-example-repository:latest",
+      "cpu": 508,
+      "memory": 1020,
+      "environment": [
+        {
+          "name": "JOB_NAME",
+          "value": "default"
+        }
+      ],
+      "secrets": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/ecs-scheduler-example",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
